@@ -1,0 +1,1095 @@
+<html lang="en"><head>
+        <meta charset="UTF-8">
+    <title>个人空间</title>
+		
+	<link rel="stylesheet" href="/newSpace/css/layui.css?t=1741948200723" type="text/css">
+    <link rel="stylesheet" href="/nervous/css/global.css?t=1741948200723">
+	<link rel="stylesheet" href="/nervous/css/appicons1.css?t=1741948200723">
+    <link rel="stylesheet" href="/nervous/css/iconStyle.css?t=1741948200723">
+            <link rel="stylesheet" href="/nervous/css/huaKeDa.css?t=1741948200723">
+    	<link rel="stylesheet" href="/nervous/css/jquery.mCustomScrollbar.css?t=1741948200723">
+	<link rel="stylesheet" href="/nervous/css/index.css?t=1741948200723">
+	<link rel="stylesheet" href="/nervous/css/company-popup.css?t=1741948200723">
+		
+    <script type="text/javascript" src="/nervous/js/jquery-3.4.1.min.js?t=1741948200723"></script>
+	<script type="text/javascript" src="/js/cookie.js?t=1741948200723"></script>
+	<script type="text/javascript" src="/layui/layui.js?t=1741948200723"></script>
+	<script type="text/javascript" src="/nervous/js/lang.js?t=1741948200723"></script>
+</head>
+<body>
+    
+	<!-- 默认状态下/通栏状态下给  左侧设置宽度
+		-->
+	<!-- 左侧划过 背景色或者颜色样式 -->
+	        <style>
+            .con .con-left .menu ul li:hover{
+                background: #4D0B18;
+            }
+        </style>
+		<!-- 左侧选中 背景色或者颜色样式 -->
+	        <style>
+            .con .con-left .menu ul li.active{
+                background: #CCA8AF;
+            }
+        </style>
+		<!-- 左侧选中 字体颜色样式 -->
+	        <style>
+            .con .con-left .menu ul li.active{
+                color: #FFFFFF;
+            }
+        </style>
+			
+			
+    <!-- 空间默认头部/设置头部引入-->
+	<!-- 左侧选中 背景色或者颜色样式 -->
+	        <style>
+            .header .space-con .nav li.user .user-popup{
+                background: #fdfdfd;
+            }
+			    			.appDownload ul li{
+    				color:#fdfdfd;
+    			}
+    			.appDownload ul li .download {
+    			    background:#fdfdfd;
+    			}
+			        </style>
+		        <div class="header" style=" background:#fdfdfd;color:#333333">
+            <div class="space-unit">
+    			    				<h3 id="siteName" title="华中科技大学(学生)" openurl="">
+    					    						华中科技大学(学生)
+    					    				</h3>
+    			            </div>
+            <div class="space-con">
+                <div class="head-nav" style="display:none;" id="headNav">
+                    <div class="head-nav-list">
+                        <ul>
+
+                        </ul>
+                    </div>
+                    <div class="head-nav-more">
+                        <div class="head-more"></div>
+                        <div class="head-more-list">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+									<div class="nav-name" id="navName">首页</div>
+				
+                <ul class="nav fr" style="position:relative">
+					<!--<li class="appCode" 
+																					style="color: #ffffff;display: none;" 
+																			>输入邀请码</li>-->
+                    <li class="user">
+                        <img class="icon-head" src="https://smartcourse.hust.edu.cn/i-smartcourse/p/185137983_80">
+                        <span>杨毅</span>
+                        <span class="icon-down02  icon-h-arrow-l"></span>
+                        <div class="user-popup">
+                            <ul>
+								                    				<li onclick="setUrl('account','/base/settings?t=1741948200724');">账号管理</li>
+    								<!--
+    								<li onclick="setUrl('recentsapp','/base/getRecentsApp');">最近使用</li>
+    								-->
+										 											<li onclick="siteListShow();">切换角色</li>
+										 								                				<li onclick="logout()">退出空间</li>
+                            </ul>
+                        </div>
+                    </li>
+											<li class="exit" onclick="logout(7)">退出</li>
+					                </ul>
+            </div>
+        </div>
+<script>
+	function logout(){
+		var url = window.location.protocol+"//"+window.location.host+"";
+		var source = getCookie("source");
+		var backUrl="";
+		if(backUrl!=null && backUrl!=undefined && backUrl!='' && backUrl!='null' ){
+			url=backUrl;
+		}
+		setCookie('source','',1,"smartcourse.hust.edu.cn");
+        $.ajax({
+            url : "/base/logout",
+            success : function() { 
+            }
+        })
+		setCookie('source','',1,"smartcourse.hust.edu.cn");
+        var passportUrl = 'smartcourse.hust.edu.cn/passport-smartcourse';
+		window.location.href = window.location.protocol+"//"+passportUrl+"/logout.html?refer="+encodeURI(url); 
+	}
+    $(document).ready(function() {
+        $(".user").mouseover(function(){
+            $(".user-popup").show();
+        });
+        $(".user").mouseout(function(){
+            $(".user-popup").hide();
+        });
+    })
+	
+	function downloadPc(){
+		window.open("http://appmarket.chaoxing.com/static/custom/xxt/pc/download.html");
+	}
+	
+	function downloadZb(){
+		window.open("https://zhibo.chaoxing.com/download");
+	}
+	
+	$(".header .space-unit h3").on("click",function(e){
+    	e.stopPropagation();
+		var openUrl=$(this).attr("openurl");
+		if(openUrl!=null && openUrl!=undefined && openUrl!='' && openUrl!='null'){
+			window.parent.open(openUrl);
+		}
+    })
+	
+	$(".header .space-unit img").on("click",function(e){
+    	e.stopPropagation();
+		var openUrl=$(this).attr("openurl");
+		if(openUrl!=null && openUrl!=undefined && openUrl!='' && openUrl!='null'){
+			window.parent.open(openUrl);
+		}
+	})
+
+</script>
+
+    <div class="con">
+    			
+		
+    <div class="con-left con-left-float" style="background:#0b6cdf;color:#FFFFFF; font-size:14px;">
+        <div class="user-block">
+            <img class="head-img" src="https://smartcourse.hust.edu.cn/i-smartcourse/p/185137983_80">
+            <p class="user-name">杨毅</p>
+			<div class="signature-wrap">
+                    <div class="signature" id="signature" style="color:#FFFFFF;"></div>
+                    <div class="signature-con" id="signatureCon" style="left: 0px; top: 10px;"><img src="/nervous/images/icon-link.png"></div>
+            </div>
+        </div>
+					<div class="unit-logo">
+									<img src="http://smartcourse.hust.edu.cn/cs-smartcourse/star3/origin/d108e76a6a0f0fd8b53352aa745b1aba" alt="">
+				
+
+			</div>
+		        <div class="menu mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar"><div id="mCSB_1" class="mCustomScrollBox mCS-inset mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0"><div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
+            <ul>
+									    					
+																								
+													    							
+    							
+    																										
+    					<li name="首页" id="first49199" onclick="setUrl('49199','https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844',this,'0','首页');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844" class="active">
+    														<span class="icon-space icon-sy-s"></span>
+														<h5 title="首页">
+									                					                						首页
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="课程" id="first49201" onclick="setUrl('49201','https://smartcourse.hust.edu.cn/fyportal-smartcourse/wfw/courselist/course3?s=5020082960aafd924af707cec0825844',this,'0','课程');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/fyportal-smartcourse/wfw/courselist/course3?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-txl-s"></span>
+														<h5 title="课程">
+									                					                						课程
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="通知" id="first49202" onclick="setUrl('49202','https://smartcourse.hust.edu.cn/notice-smartcourse/pc/notice/myNotice?s=5020082960aafd924af707cec0825844',this,'0','通知');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/notice-smartcourse/pc/notice/myNotice?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-yj-s"></span>
+														<h5 title="通知">
+									                					                						通知
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+															<span class="inform-txt" style="display: none;"><i style="/*! width: 14px; */height: 14px;background: #f33f34;display: inline-block;border-radius: 10px;line-height: 13px;font-size: 10px;padding: 0 5px;margin-left: 5px;vertical-align: middle;margin-top: 2px;border: 1px solid rgba(255,255,255,1);vertical-align: text-bottom;">0</i></span>
+							<script>
+								function getNoticeCount(){
+                                    $.ajax({
+                                        type:'post',
+                                        url:'/base/getNoticeCount',
+                                        data:{_t:new Date()},
+                                	    dataType: "json",
+                                		async:true,
+                                	    success: function(data){
+                            				if(data.status && data.count>0){
+								if(data.count>999){
+    											$(".inform-txt i").text('999+');
+                            					}else{
+    											$(".inform-txt i").text(data.count);
+                            					}
+                            					$(".inform-txt").show();
+                            				}else{
+                            					$(".inform-txt").hide();
+                            				}
+                                        }
+                                    })
+								}
+								getNoticeCount();
+							</script>
+													</li>
+					    					
+																								
+																									
+    					<li name="笔记" id="first49203" onclick="setUrl('49203','https://smartcourse.hust.edu.cn/noteyd-smartcourse/pc/note_notebook/myNotebooksLatest?s=5020082960aafd924af707cec0825844',this,'0','笔记');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/noteyd-smartcourse/pc/note_notebook/myNotebooksLatest?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-bj-s"></span>
+														<h5 title="笔记">
+									                					                						笔记
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="小组" id="first49205" onclick="setUrl('49205','https://smartcourse.hust.edu.cn/groupweb-smartcourse/pc/circle/circleIndex?s=5020082960aafd924af707cec0825844',this,'0','小组');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/groupweb-smartcourse/pc/circle/circleIndex?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-xz-s"></span>
+														<h5 title="小组">
+									                					                						小组
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="云盘" id="first49206" onclick="setUrl('49206','https://smartcourse.hust.edu.cn/pan-smartcourse/pcuserpan/index?s=5020082960aafd924af707cec0825844',this,'0','云盘');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/pan-smartcourse/pcuserpan/index?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-yp-s"></span>
+														<h5 title="云盘">
+									                					                						云盘
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="评价问卷" id="first53871" onclick="setUrl('53871','https://smartcourse.hust.edu.cn/pj/newesReception/ratedHome?s=5020082960aafd924af707cec0825844',this,'2','评价问卷');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/pj/newesReception/ratedHome?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-zt-s"></span>
+														<h5 title="评价问卷">
+									                					                						评价问卷
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="全部服务" id="first49200" onclick="setUrl('49200','https://smartcourse.hust.edu.cn/i-smartcourse/base/app?s=5020082960aafd924af707cec0825844',this,'0','全部服务');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/i-smartcourse/base/app?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-yy-s"></span>
+														<h5 title="全部服务">
+									                					                						全部服务
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="常用服务" id="first53886" onclick="setUrl('53886','https://smartcourse.hust.edu.cn/i-smartcourse/base/indexNew?s=5020082960aafd924af707cec0825844',this,'0','常用服务');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/i-smartcourse/base/indexNew?s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-sc-s"></span>
+														<h5 title="常用服务">
+									                					                						常用服务
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+					    					
+																								
+																									
+    					<li name="意见反馈" id="first53892" onclick="setUrl('53892','https://smartcourse.hust.edu.cn/fyportal-smartcourse/checkLogin?tourl=https%3A%2F%2Fwps.hust.edu.cn%2Fform%2Fw%2FQIJcachy%3Fulocale%3Dzh-CN%23write&amp;s=5020082960aafd924af707cec0825844',this,'2','意见反馈');" imgname="icon-home" dataurl="https://smartcourse.hust.edu.cn/fyportal-smartcourse/checkLogin?tourl=https%3A%2F%2Fwps.hust.edu.cn%2Fform%2Fw%2FQIJcachy%3Fulocale%3Dzh-CN%23write&amp;s=5020082960aafd924af707cec0825844">
+    														<span class="icon-space icon-yj-s"></span>
+														<h5 title="意见反馈">
+									                					                						意见反馈
+                												</h5>
+							<span class="arrow icon-uniE900"></span>
+													</li>
+									            </ul>
+        </div><div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-inset mCSB_scrollTools_vertical" style="display: none;"><div class="mCSB_draggerContainer"><div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 30px;"></div></div><div class="mCSB_draggerRail"></div></div></div></div></div>
+        
+    </div>
+		
+	<script>
+		var scheme='https';
+		if(scheme!=null && scheme!=undefined && scheme!=''){
+			scheme=scheme+'://'+window.location.host;
+		}else{
+			scheme='http://'+window.location.host;
+		}
+		var navFlag=false;
+		$(document).ready(function(){
+			// 个性签名
+            let signatureEle = $(".signature-wrap");
+            let signatureOffSetT = signatureEle.offset().top + signatureEle.height() + 10,
+                signatureOffSetL = $("#signature").offset().left;
+            $("#signatureCon").css({
+                "left": signatureOffSetL,
+                "top": signatureOffSetT
+            })
+            $("#signature").mouseenter(function () {
+    
+                $("#signatureCon").fadeIn("fast");
+            }).mouseleave(function () {
+                $("#signatureCon").fadeOut("fast");
+            })
+			
+			$(".con-right .right-con ").css("margin-top","80px");
+			if('185137983' != ''){
+				var id =  '185137983';
+				var photoUrl = 'smartcourse.hust.edu.cn/i-smartcourse';
+				var phono = "https://"+photoUrl+"/p/"+id+"_80";
+				$(".icon-head").attr("src",phono);
+				$(".head-img").attr("src",phono);
+			} else{
+				$(".icon-head").attr("src","/nervous/images/picture01.png");
+				$(".head-img").attr("src","/nervous/images/picture01.png");
+			}
+			if("https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844".indexOf("/base/index")!=-1 || "https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844".indexOf("/res/pc/curriculum/schedule.html")!=-1){
+				$("#appDownload").show();
+			}else{
+				$("#appDownload").hide();
+			}
+			var backgroundFlag="#ffffff";
+			if("https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844".indexOf("/education/student/stuActiveListEducation")!=-1){
+				backgroundFlag="none";
+			}
+			$("#mainright").html('<iframe id="frame_content" name="frame_content"  allowfullscreen="true" allowtransparency="true"  frameborder="0" scrolling="auto" style="border: 0px;height:calc(100vh - 80px); float:left;position: relative;z-index: 99; background:'+backgroundFlag+';" width="100%" src=""></iframe>');
+            
+			if(navFlag){
+				var _data=$("#first"+"49199");
+				setNavList( "49199", "https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844",_data,"0");
+			}else{
+				$("#frame_content").attr("src", "https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844");
+			}
+            try{
+                iFrameResizeSetting();
+            }catch(error){
+                 
+            }
+            $('html , body').animate({scrollTop: 0},0);
+            $("#item_first").html("首页");
+		})
+        function setUrl(id, url,_this,aot_value,app_name){
+			$("#to_top").remove();
+			var navUrl=url;
+			var backHigh=80;
+			$("#navName").text(app_name)
+			if(app_name == "首页"){
+				$(".bodyBg").show()
+			}else {
+				$(".bodyBg").hide()
+			}
+			if(id!=null && id=='app'){
+				$("#item_first").hide();
+				if(!navFlag){
+    				$("#item_back").show();
+					backHigh=160;
+    				$("#item_back").attr("onclick","setUrl('back','"+scheme+"/base/app?fid="+siteFid+"&tid="+tid+"')");
+					$(".con-right .right-con ").css("margin-top","144px");
+				}
+			}else if(id!=null && id=='market'){
+				$("#item_first").hide();
+				if(!navFlag){
+    				$("#item_back").show();
+					backHigh=160;
+					var dataurl=$(".menu").find("ul").find("li.active").attr("dataurl");
+    				$("#item_back").attr("onclick","setUrl('back','"+dataurl+"')");
+					$(".con-right .right-con ").css("margin-top","144px");
+				}
+			}else if(id!=null && id=='common'){
+				$("#item_first").hide();
+    			$("#item_back").hide();
+				$(".con-right .right-con ").css("margin-top","80px");
+			}else if(id!=null && id=='index'){
+				$("#item_first").hide();
+				if(!navFlag){
+    				$("#item_back").show();
+					backHigh=160;
+    				$("#item_back").attr("onclick","setUrl('back','"+scheme+"/base/index?fid="+siteFid+"&tid="+tid+"')");
+					$(".con-right .right-con ").css("margin-top","144px");
+				}
+			}else if(id!=null && id=='back'){
+				if(!navFlag){
+					$("#item_first").show();
+				}
+                $("#item_back").hide();
+				$(".con-right .right-con ").css("margin-top","80px");
+			}else if(id!=null && id=='rapp'){
+				$("#item_first").hide();
+				if(!navFlag){
+    				$("#item_back").show();
+					backHigh=160;
+    				$("#item_back").attr("onclick","setUrl('recentsapp','"+scheme+"/base/getRecentsApp')");
+					$(".con-right .right-con ").css("margin-top","144px");
+				}
+			}else{
+				if( id=='account'){
+					$("#item_first").html('账号管理');
+				}else if( id=='recentsapp'){
+					$("#item_first").html('最近使用');
+				}else{
+					$("#item_first").html($(_this).attr("name"));
+				}
+				if(!navFlag){
+					$("#item_first").show();
+				}
+                $("#item_back").hide();
+				if(aot_value!=1 && aot_value!=2){
+					$(_this).addClass("active").siblings().removeClass("active");
+				}
+				$(".con-right .right-con ").css("margin-top","80px");
+			}
+			
+			if(aot_value==1){
+				window.open("/space/out_link.shtml?ename=&burl="+url);
+			}else if(aot_value==2){
+				window.open(url);
+			}else if(aot_value==3){
+				window.location.href="/space/out_link.shtml?ename=&burl="+url;
+			}else if(aot_value==4){
+				window.location.href=url;
+			}else{
+    			if(url.indexOf("/base/index")!=-1 || url.indexOf("/res/pc/curriculum/schedule.html")!=-1){
+    				$("#appDownload").show();
+    			}else{
+    				$("#appDownload").hide();
+    			}
+				if(url.indexOf("/wfw/space/redirectUrl")!=-1 ){
+					$.ajax({
+						type: "post",
+						url: "/wfw/space/verifyApp",
+						data:{tid:tid,fid:siteFid,nappId:id},
+						dataType: "json",
+						async:false,
+						success: function(data){
+							if(data.status){
+								//是 审批/表单 应用，显示权限按钮
+								url=url+"&permissionGroupId="+data.permissionGroupId;
+							}
+						}
+					})
+				}
+    			if(url.indexOf("/base/app")!=-1 || url.indexOf("/base/index")!=-1 ){
+					if(id==null || id==undefined || id=='' || id!='common'){
+						url=url+"&fid="+siteFid+"&tid="+tid;
+					}
+    			}else{
+					if(url.indexOf("notice.chaoxing.com")!=-1  || url.indexOf("/pc/notice/myNotice")!=-1  ){
+						//$(_this).find(".inform-txt").hide();
+					}else{
+						//$(".inform-txt").show();
+					}
+    			}
+				
+				var backgroundFlag="#ffffff";
+    			if(url.indexOf("/education/student/stuActiveListEducation")!=-1){
+    				backgroundFlag="none";
+    			}
+				$("#mainright").html('<iframe id="frame_content" name="frame_content" allowfullscreen="true" allowtransparency="true"  frameborder="0" scrolling="auto" style="border: 0px; height:calc(100vh - '+backHigh+'px); float:left;position: relative;z-index: 99; background: '+backgroundFlag+';" width="100%" src=""></iframe>');
+	
+                $("#frame_content").attr("src", url);
+				if(id!=null && id!=undefined && id!='app' && navFlag){
+					setNavList(id, navUrl,_this,aot_value);
+				}
+
+                var offsetTop = $("#frame_content").offset().top;
+                var offsetLeft = $("#frame_content").offset().left;
+                var marObj = {
+                   paddingL: offsetLeft,
+                   paddingT: offsetTop,
+                   paddingR:0,
+                   fullScreen:1
+                };
+                document.getElementById('frame_content').contentWindow.postMessage(JSON.stringify(marObj), "*");
+
+                $('html , body').animate({scrollTop: 0},0);
+			}
+        }
+		var schoolName = "华中科技大学(学生)";
+        
+        function switchSite(fid,name,_this,wfworg,tid,roleId){
+			var nowFid = '1731';
+			if(nowFid!=null && nowFid!=undefined && nowFid!="" && fid!=null && fid!=undefined && fid!="" && nowFid==fid){
+				 location.href = "/base?fid="+fid+"&wfworg="+wfworg+"&tid="+tid;
+				 return;
+			}
+            $(_this).addClass("active").siblings().removeClass("active");
+            $.ajax({
+                url:'/base/switchSite',
+                data:{siteFid:fid,siteName:name,siteTid:tid,siteRoleId:roleId},
+                type:'post',
+				dataType:'json',
+                success:function(data){
+					if(data.status){
+						var schemeType='https';
+						if(schemeType!=null && schemeType!=undefined && schemeType!=''){
+							schemeType='http';
+						}
+						if(data.b){
+							if(data.domain.indexOf(window.location.host)!=-1){
+								location.href = "/base?fid="+fid+"&wfworg="+wfworg+"&tid="+tid;
+							}else{
+    							if(data.domain.indexOf("http://")!=-1 || data.domain.indexOf("https://")!=-1){
+    								window.open(data.domain);
+    							}else{
+    								window.open(schemeType+"://"+data.domain);
+    							}
+							}
+						}else{
+           					var title="";
+               				if(name!=null && name!=undefined && name!="" && name.length>13){
+               					title = name.substring(0, 13)+"..."
+               				}else{
+           						title=name;
+           					}
+                            $("#siteName").html(title).attr("title",name);
+                            location.href = "/base?fid="+fid+"&wfworg="+wfworg+"&tid="+tid;
+						}
+					}
+                }
+            })
+        }
+	</script>
+	
+<script type="text/javascript">
+	var timer;
+	function scroll(dom) {
+		var maxW = dom.find("span").width() - dom.width();
+		if(maxW <= 0){
+			return;
+		}
+		dom.css("text-overflow","unset");
+		timer = setInterval(function() {
+			dom[0].scrollLeft++;
+			if(dom[0].scrollLeft >= maxW){
+				clearInterval(timer);
+			}
+		}, 10);
+	}
+
+</script>
+        <div class="con-right style3">
+			<div class="pageBack" id="item_back" style="display:none;">
+    			<img src="/nervous/images/back-btn.png">
+                <span>返回</span>
+			</div>
+            <div class="right-con" style="overflow-x: hidden; min-width: 900px; margin-top: 80px;">
+    			<div class="bodyBg"></div>
+                <div class="center" style="padding-top: 0px;" id="mainright"><iframe id="frame_content" name="frame_content" allowfullscreen="true" allowtransparency="true" frameborder="0" scrolling="auto" style="border: 0px;height:calc(100vh - 80px); float:left;position: relative;z-index: 99; background:#ffffff;" width="100%" src="https://smartcourse.hust.edu.cn/noteyd-smartcourse/front/pageindex/pc/index.html?s=5020082960aafd924af707cec0825844"></iframe></div>
+            </div>
+    	</div>
+    </div>
+	        <div class="appDownload" id="appDownload" style="display: none;">
+            <ul>
+                <li class="appDown black" onclick="downloadPc();">
+					<span class="download"><img src="/nervous/images/download.png"></span>PC客户端下载                </li>
+                <li class="appDown black" onclick="downloadZb();">
+                   <span class="download"><img src="/nervous/images/download.png"></span>直播客户端下载                </li>
+            </ul>
+        </div>
+	    <div class="popupCon" id="pu-code">
+        <div class="popup pu-code">
+            <div class="pu-title" style="margin-top: 0;">
+                <h6>请输入邀请码</h6>
+            </div>
+            <div class="pu-con">
+                <input type="text" id="invitecode" placeholder="请输入课程、应用、小组、直播邀请码">
+            </div>
+            <div class="pu-btns">
+                <span class="btn-cancel">取消</span>
+                <span class="btn-sure">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="popupCon" id="pu-tips">
+        <div class="popup pu-tips">
+            <div class="pu-title">
+                <h6>提示</h6>
+            </div>
+            <div class="pu-con">
+                <img src="/nervous/images/errorTips.png" alt="">
+                <p>该邀请码应用暂无pc端访问方式</p>
+            </div>
+            <div class="pu-btns">
+                <span class="btn-cancel">取消</span>
+                <span class="btn-sure">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="popupCon" id="pu-course">
+        <div class="popup pu-course" style="width: 440px; height: auto;">
+            <div class="pu-title">
+                <h6>应用详情</h6>
+                <span class="pu-close"></span>
+            </div>
+            <div class="pu-con">
+                <img src="" class="course-cover" alt="">
+                <div class="course-mes">
+                    <h6></h6>
+                </div>
+				<input type="hidden" id="appId" value="">
+				<input type="hidden" id="appCode" value="">
+				<input type="hidden" id="appUrl" value="">
+				<input type="hidden" id="appName" value="">
+            </div>
+            <div class="pu-btns">
+                <span class="btn-join">访问应用</span>
+            </div>
+        </div>
+    </div>
+	
+    <div class="pouop puTips" id="puTips">
+        <!--    mark-icon.png  sucese-icon.png  添加成功  添加失败-->
+        <img src="/nervous/images/error-icon.png" alt="">
+        <p></p>
+    </div>
+	
+    <div class="popup" style="display:none" id="sitePopup">
+    	<div class="window">
+    		<div class="p-title">切换角色				<span class="close"></span>
+			</div>
+    		<div class="search">
+    			<input type="text" placeholder="请输入单位名称/fid搜索" id="searchName" oninput="siteListShow();">
+				<span onclick="siteListShow();" style="cursor: pointer;">搜索</span>	
+    		</div>
+    		<div class="company">
+    			<ul>
+    
+    			</ul>
+    		</div>
+    	</div>
+    </div>
+	
+    <div class="z-popup-wrap">
+        <div class="pu-del">
+            <div class="pu-title">提示</div>
+            <div class="pu-con">
+                <img src="/nervous/images/errorTips.png" alt="">
+                <div class="z-tips">由于您在本页面长时间未操作，系统将刷新页面，请您稍后再进行操作</div>
+            </div>
+            <div class="pu-btn">
+                <span>确认</span>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="/nervous/js/jquery.mCustomScrollbar.concat.min.js?t=1741948200724"></script>
+<script type="text/javascript" src="/nervous/js/comon.js?t=1741948200724"></script>
+<script type="text/javascript" src="/nervous/js/page.js?t=1741948200724"></script>
+<script type="text/javascript" src="/nervous/js/iframeResizer.min.js?t=1741948200724"></script>
+<script type="text/javascript" src="/nervous/js/lang.js?t=1741948200724"></script>
+<script>
+	var siteFid = '1731';
+	var tid = '10';
+	var page=1;
+	var pageSize=10;
+	var scrollFlag=true;
+    $(document).ready(function () {
+		changeLanguageInit();
+	  $(".con-left").css("top",$(".r-header").height());
+        /* 导航下拉 */
+        $(".head-nav-more .head-more").click(function (e) {
+            e.stopPropagation();
+            $(this).next().stop().slideToggle('fast');
+        });
+        $(document).click(function (e) {
+            e.stopPropagation();
+            $(".head-more-list").slideUp('fast');
+        });
+        //   删除头部导航
+        $(".head-nav").on('click', ".head-nav-list li .nav-close", function (e) {
+            e.stopPropagation();
+            $(this).parents('li').remove();
+            var moreLi = $(".head-more-list ul li");
+            var dataIdThis=$(this).parent().find('.nav-name').attr('data-id');
+            if (moreLi.length > 0) {
+                var moreFistLi = moreLi.eq(0).remove();
+                $(".head-nav-list ul").append(moreFistLi);
+                if ($(".head-more-list ul li").length == 0) {
+                    $(".head-nav-more").hide();
+                }
+            }
+        });
+        $(".head-nav").on('click', ".head-more-list li .nav-close", function (e) {
+            e.stopPropagation();
+            $(this).parents('li').remove();
+            if ($(".head-more-list ul li").length == 0) {
+                $(".head-nav-more").hide();
+            }
+        });
+	});
+	
+	function setNavList(dataId,navUrl,_this,aot_value) {
+        var dataName ='';
+		if(dataId!=null && dataId!=undefined && dataId=='account' ){
+			dataName = '账号管理';
+		}else{
+			dataName = $(_this).attr("name");
+		}
+		var onc="#first"+dataId;
+        var setUrlT ="setUrl('"+dataId+"','"+navUrl+"','"+onc+"','"+aot_value+"');";
+		$(".head-nav-list ul li").removeClass('cur');
+		$(".head-more-list ul li").removeClass('cur');
+		var dataLi=$("#nav"+dataId);
+		if(dataLi.length>0){
+			dataLi.addClass('cur');
+		}else{
+			var navLen=$(".head-nav-list ul li").length;
+			if(navLen>5){
+				$(".head-nav-more").show();
+				var navListStr2 = '<li class="cur" id="nav'+dataId+'"><span class="nav-name" data-id="'+dataId+'" onclick="' + setUrlT + '">' + dataName + '</span><span class="nav-close"></span></li>';
+				$(".head-more-list ul").append(navListStr2);
+			}else{
+				 $(".head-nav-more").hide();
+				 var navListStr1 = '<li class="cur" id="nav'+dataId+'"><span class="nav-name" data-id="'+dataId+'" onclick="' + setUrlT + '">' + dataName + '</span><span class="nav-close"></span></li>';
+				 $(".head-nav-list ul").append(navListStr1);
+			}
+		}
+    };
+	function siteListShow(){
+		$("#sitePopup .company").mCustomScrollbar("destroy");
+		$("body").css("overflow","hidden")
+		var searchName=$("#searchName").val();
+		if(searchName==null || searchName==undefined ){
+			searchName='';
+		}
+        $.ajax({
+            url:'/base/cacheUserOrg',
+			data:{searchName:searchName,_t:new Date()},
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.site.length > 0){
+                    var html = "";
+                    for ( var j = 0; j < data.site.length; j++) {
+                        html += "<li onclick=\"switchSite("+data.site[j].fid+",'"+data.site[j].schoolname+"',this,'"+data.site[j].wfworg+"',"+data.site[j].tid+",'"+data.site[j].roleid+"')\"";
+                        if(siteFid == data.site[j].fid && tid == data.site[j].tid){
+                            html += " class=\"active\"";
+                        }
+						html += " title='"+ data.site[j].schoolname+"'><h3>"+data.site[j].schoolname+" </h3><span class='unit-select'></span></li>";
+                    }
+                    $("#sitePopup ul").html(html);
+                }else{
+					$("#sitePopup ul").html('');
+				}
+            }
+        })
+		$("#sitePopup").show();
+		$("#sitePopup .company").mCustomScrollbar({theme:"dark-3"});
+	}
+	
+	$("#sitePopup .close").click(function(){
+	  $("#sitePopup").hide();
+	  $("body").css("overflow","auto")
+	})
+	
+	$("#sitePopup .company").on("click","li",function(){
+		$("#sitePopup").hide();
+		$(this).addClass("active").siblings().removeClass("active");
+	})
+	
+	//  添加邀请码
+    $(".appCode").click(function () {
+        $("#pu-code").fadeIn();
+    });
+	//   邀请码确定
+    $("#pu-code").on("click",".pu-btns .btn-sure",function () {
+		var invitecode=$("#invitecode").val();
+		if(invitecode==null || invitecode==undefined ){
+			invitecode='';
+		}
+        $.ajax({
+            url:'/base/getInviteCode',
+			data:{invitecode:invitecode,fid:siteFid,_t:new Date()},
+            dataType:'json',
+            type:'post',
+            success:function(data){
+                if(data.status){
+					if(data.flag==1 || data.flag=='1'){
+						if(data.appUrl!=null && data.appUrl!=undefined && data.appUrl!='' && data.appUrl!='null'){
+							$("#pu-course").find(".pu-con img").attr("src",data.appImage);
+							$("#pu-course").find(".pu-con .course-mes h6").text(data.appName);
+							$("#appCode").val(invitecode);
+							$("#appId").val(data.appId);
+							$("#appUrl").val(data.appUrl);
+							$("#appName").val(data.appName);
+							$("#pu-code").fadeOut();
+                        	$("#pu-course").show();
+						}else{
+							$("#pu-code").fadeOut();
+                       		$("#pu-tips").show();
+						}
+					}else{
+						$("#pu-code").fadeOut();
+						window.open(data.url);
+					}
+                }else{
+					var msg='获取失败';
+					if(data.msg!=null && data.msg!=undefined && data.msg!=''){
+						msg=data.msg;
+					}
+					$("#puTips").find("p").text(msg);
+		            $("#puTips").fadeIn();
+                    setTimeout(function () {
+                        $("#puTips").fadeOut()
+                    },2000)
+				}
+            }
+        })
+    });
+    //   邀请码取消
+    $("#pu-code").on("click",".pu-btns .btn-cancel",function () {
+        $(".popupCon").fadeOut();
+    });
+	//    课程确定
+    $("#pu-course").on("click",".pu-btns .btn-join",function () {
+		var appUrl=$("#appUrl").val();
+		var appCode=$("#appCode").val();
+		var appName=$("#appName").val();
+		var appId=$("#appId").val();
+		if(appId!=null && appId!=undefined && appId!='' &&
+			appCode!=null && appCode!=undefined && appCode!='' &&
+				appUrl!=null && appUrl!=undefined && appUrl!='' ){
+    		$.ajax({
+                url:'/base/setRecentsApp',
+    			data:{appName:appName,appCode:appCode,appId:appId,_t:new Date()},
+                dataType:'json',
+                type:'post',
+                success:function(data){}
+    		})
+            $("#pu-course").fadeOut()
+			window.open(appUrl);
+		}
+    });
+	
+	//    课程取消
+    $("#pu-course").on("click",".pu-close",function () {
+		 $("#pu-course").fadeOut()
+	});
+	//  提示取消
+    $("#pu-tips").on("click",".pu-btns .btn-cancel",function () {
+        $("#pu-tips").fadeOut();
+    });
+    //  提示确定
+    $("#pu-tips").on("click",".pu-btns .btn-sure",function () {
+        $(".popupCon").fadeOut();
+    })
+	//session过期提示
+	$(".z-popup-wrap").on("click",".pu-del .pu-btn span",function () {
+		$(".z-popup-wrap").hide();
+		location.reload(true);
+	})
+</script>
+
+<!-- 子页面弹出框全页面覆盖公共方法 -->
+<script>
+	var offsetFlag=0;
+ 	window.onload = function () {
+        // 父页面初始信息
+        var offsetTop = $("#frame_content").offset().top;
+        var offsetLeft = $("#frame_content").offset().left;
+        var iframeH = $(window).height() - $(".header").height();
+        var iframeW = $("#frame_content").width() - offsetLeft;
+       var marObj = {
+            paddingL: offsetLeft,
+            paddingT: offsetTop,
+            paddingR: 0,
+            fullScreen: 1,
+            cmd: 1001,
+            bottom: 0,
+            height: iframeH,
+            left: offsetLeft,
+            right: 0,
+            toggle: true,
+            top: offsetTop,
+            width: iframeW
+        };
+		var marObj1 = {
+                        paddingL: offsetLeft,
+                        paddingT: offsetTop,
+                        paddingR: 0,
+                        fullScreen: 1,
+                        cmd: 1001,
+                        bottom: 0,
+                        height: iframeH,
+                        left: 0,
+                        right: 0,
+                        toggle: true,
+                        top: 0,
+                        width: iframeW
+                    };
+        // 父页面向子页面传递信息
+		document.getElementById('frame_content').contentWindow.postMessage(JSON.stringify(marObj1), "*");
+        // 获取子页面传过来的信息
+        window.addEventListener('message', function (e) {
+	
+            try {
+			var data = JSON.parse(e.data);
+			  if(data.toggle == true || data==""){
+			    if(data.color){
+				  document.getElementById('frame_content').contentWindow.postMessage(JSON.stringify(marObj1), '*');
+				}else{
+				   document.getElementById('frame_content').contentWindow.postMessage(JSON.stringify(marObj), '*');
+				}
+			   
+			  }else{
+			    document.getElementById('frame_content').contentWindow.postMessage(JSON.stringify(marObj1), '*');
+			  }
+			                
+                console.log(e.data);
+                if (data!=null && data!=undefined && data.toggle!=null && data.toggle!=undefined && data.toggle == true) {
+                    if(data.color){
+					  
+					  $("#frame_content").css({
+                        position: "fixed",
+                        left: 0,
+                        top: 0,
+                        'z-index': 99999,
+                        width: '100%',
+                        height: '100%',
+                        'padding-left':offsetLeft+'px',
+                        'padding-top':offsetTop+'px',
+                        background:data.color,
+						'box-sizing': 'border-box',
+						'min-width':'1400px'
+                    })
+					}else{
+					  $("#frame_content").css({
+                            position: "fixed",
+                            left: 0,
+                            top: 0,
+                            'z-index': 99999,
+                            width: '100%',
+                            height: '100%', 
+							background:'none',
+                            'box-sizing': 'border-box'
+                        })
+					}
+					
+                } else {
+                    $("#frame_content").css({
+                        position: "initial",
+                        left: 0,
+                        top: 0,
+                        'z-index': 2,
+                        width: iframeW + 'px',
+                        height:'calc(100vh - 80px)',
+                        'padding-left':0,
+                        'padding-top':0,
+
+						'min-width':'100%'
+                    })
+					
+
+                    document.getElementById('frame_content').postMessage(JSON.stringify(marObj1), '*');
+                }
+    			if(data!=null && data!=undefined && data.type!=null && data.type!=undefined && data.type=='notice' ){
+    				getNoticeCount();
+    			}
+            } catch (e) {
+
+            }
+
+        }, false);
+    };
+
+</script>
+<script type="text/javascript">
+    var iframe = document.getElementById("frame_content");
+    iframe.onload = function(){
+		try{
+            iframe.contents().find(".Wrapbody").css("margin","0 auto");
+        	iframe.contents().find(".con-right").css("width","100%");
+        }catch(err){
+        }
+    }
+	function iframeWidthResize(){
+    	if($('.left-con').is(':hidden')){
+        	 var iframeW = $(window).width()-120;
+			 if(iframeW<1060){
+			 	iframeW=1060;
+			 }
+        	$(".right-con .center").css({width:iframeW,background:"#ffffff",overflow:"hidden",margin:"0 60px"})
+            $(".right-con .center").width(iframeW);
+			$("#frame_content").css({width: iframeW});
+    	}else{
+        	var iframeW = $(window).width()-$(".con-left").width()-120;	  
+			 if(iframeW<1060){
+			 	iframeW=1060;
+			 }
+        	$(".right-con .center").css({width:iframeW,background:"#ffffff",overflow:"hidden",margin:"0 60px"})
+            $(".right-con .center").width(iframeW);
+			$("#frame_content").css({width: iframeW});
+        	}
+	};
+	
+    $(window).resize(function () {
+		if(offsetFlag==0){
+    		var iframeH=$(window).height()-$(".space-unit").height()-$(".user-block").height();
+    		$(".left-con .menu").height(iframeH);
+    		setTimeout(function(){
+        		var winH=$(window).height();
+        		/*$("#frame_content").css({
+        			height:winH,
+        			'min-height':"inherit"
+                });*/
+    		},300)
+		}else{
+    		setTimeout(function(){
+        		var winH=$(window).height();
+        		$("#frame_content").css({
+                    position: "fixed",
+                    left: 0,
+                    top: 0,
+                    'z-index': 99999,
+                     width: '100%',
+                     height:winH,
+                     'min-height':"inherit"
+                 });
+    		},300)
+		}
+	});
+	var domain="smartcourse.hust.edu.cn";
+	if(domain==null || domain==undefined || domain=="" || domain=="null" ){
+		document.domain ="chaoxing.com";
+	}else{
+		document.domain =domain;
+	}
+		function setTab(id){
+			$("#li_"+id).addClass("activess").siblings().removeClass("activess");
+			frame_content.window.setTab_1(id);
+		}
+
+        var winScroll=$(window.parent.window) ? $(window.parent.window) : $(window);
+        var docScroll=$(window.parent.document) ? $(window.parent.document) : $(document);
+        winScroll.scroll(function(){
+            if (winScroll.scrollTop()+winScroll.height() >= docScroll.height()-5) {
+                try{
+                    document.getElementById('frame_content').contentWindow.loading(); 
+                }catch(err){
+                    return false;
+                }
+            }
+        });
+        
+        function reloadImg(){
+            $(".head-img").attr("src",$(".head-img").attr("src")+"?t="+Math.random());
+            $(".icon-head").attr("src",$(".icon-head").attr("src")+"?t="+Math.random());
+        }
+		
+        var iframe=document.getElementById("frame_content");
+		
+		
+function setScheduledTask(hour, minute, callTask) { 
+    let taskTime = new Date(); 
+    taskTime.setHours(hour); 
+    taskTime.setMinutes(minute); 
+    let timeDiff = taskTime.getTime() - (new Date()).getTime(); // 获取时间差
+    timeDiff = timeDiff > 0 ? timeDiff : (timeDiff + 24 * 60 * 60 * 1000); 
+    setTimeout(function() { 
+		callTask(); // 首次执行 
+   		 setInterval(callTask, 24 * 60 * 60 * 1000); // 24小时为循环周期
+    }, timeDiff); 
+}
+setScheduledTask(3, 0, logout);
+  
+  
+
+</script>
+
+</body></html>
