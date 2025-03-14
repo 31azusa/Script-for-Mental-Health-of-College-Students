@@ -7,7 +7,7 @@ import time
 import os
 
 # 指定 Edge WebDriver 路径
-driver_path = "D:\\MPNN\\yyguaji\\edgedriver_win32\\msedgedriver.exe"
+driver_path = "D:\\MPNN\\guaji\\edgedriver_win32\\msedgedriver.exe"
 if not os.path.exists(driver_path):
     raise FileNotFoundError(f"找不到 WebDriver: {driver_path}")
 
